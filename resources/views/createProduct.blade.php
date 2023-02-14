@@ -27,6 +27,13 @@
 
 
     </select> <br> <br>
+    <label for=""> <strong>Categories : </strong></label> <br>
+    @foreach ($categories as $category)
+    {{$category -> name}} <input type="checkbox"
+        name="{{$category -> name}}"
+        value={{$category
+        -> id}}> <br>
+    @endforeach
     <input type="submit"
         value="Create">
 

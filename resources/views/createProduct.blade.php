@@ -1,8 +1,10 @@
 @extends('layouts.main-layout')
 @section('content')
 <h1>CREATE A NEW PRODUCT</h1>
-<form action=""
+<form action="{{route('product.create')}}"
     method="POST">
+    @include("components.errors")
+    @csrf
     <label for="name">Name : </label>
     <input type="text"
         name="name"> <br> <br>
@@ -27,13 +29,14 @@
 
 
     </select> <br> <br>
-    <label for=""> <strong>Categories : </strong></label> <br>
     @foreach ($categories as $category)
-    {{$category -> name}} <input type="checkbox"
-        name="{{$category -> name}}"
+    <input type="checkbox"
+        name="categories[]"
         value={{$category
-        -> id}}> <br>
+        -> id}}>
+    <label for="categories">{{$category -> name}}</label> <br>
     @endforeach
+    <br>
     <input type="submit"
         value="Create">
 

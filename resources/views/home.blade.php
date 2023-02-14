@@ -4,6 +4,9 @@
 <h3>
     <a href="{{route('products')}}">All Products</a>
 </h3>
+<h3>
+    <a href="{{route('productCreatePage')}}">Create a New Product</a>
+</h3>
 <ul>
     @foreach ($categories as $category)
     <h1>{{$category -> name}}</h1>

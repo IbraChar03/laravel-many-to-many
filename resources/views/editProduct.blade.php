@@ -1,7 +1,7 @@
 @extends('layouts.main-layout')
 @section('content')
 <h1>EDIT PRODUCT</h1>
-<form action="" method="POST">
+<form action="{{route('product.update',$product)}}" method="POST">
     @include("components.errors")
     @csrf
     <label for="name">Name : </label>

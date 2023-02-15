@@ -65,4 +65,27 @@ class MainController extends Controller
         $typologies = Typology::all();
         return view("editProduct", compact("product", "categories", "typologies"));
     }
+    public function updateProduct(Request $request, Product $product)
+    {
+
+        $data = $request->validate([
+            "name" => ["string", "required"],
+            "price" => ["integer", "required"],
+            "description" => ["string", "required"],
+            "weight" => ["integer", "required"],
+            "typology" => ["required"],
+            "categories" => ["required", "array"],
+        ]);
+
+        $product->name = $data["name"];
+        $product->description = $data["description"];
+        $product->weight = $data["weight"];
+        $product->price = $data["price"];
+        $typology = Typology::find($data["typology"]);
+        $product->typology()->associate($typology);
+        $product->save();
+        $categories = Category::find($data["categories"]);
+        $product->categories()->attach($categories);
+        return redirect()->route("home");
+    }
 }

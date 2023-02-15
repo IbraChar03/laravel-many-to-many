@@ -59,4 +59,10 @@ class MainController extends Controller
         $product->delete();
         return redirect()->route("home");
     }
+    public function editPage(Product $product)
+    {
+        $categories = Category::all();
+        $typologies = Typology::all();
+        return view("editProduct", compact("product", "categories", "typologies"));
+    }
 }

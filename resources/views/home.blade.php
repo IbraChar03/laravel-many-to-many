@@ -16,6 +16,7 @@
         digital ? "Yes" : "No"}}
     </li>
     <a href="{{route('product.delete',$product)}}">DELETE</a>
+    <a href="{{route('productEditPage',$product)}}">EDIT</a>
     @endforeach
     <hr>
     @endforeach

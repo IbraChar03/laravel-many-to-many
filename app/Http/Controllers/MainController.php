@@ -45,11 +45,18 @@ class MainController extends Controller
         $product->description = $data["description"];
         $product->weight = $data["weight"];
         $product->price = $data["price"];
-        $product->typology()->associate($data["typology"]);
+        $typology = Typology::find($data["typology"]);
+        $product->typology()->associate($typology);
         $product->save();
         $categories = Category::find($data["categories"]);
         $product->categories()->attach($categories);
         return redirect()->route("home");
 
+    }
+    public function delProduct(Product $product)
+    {
+        $product->categories()->sync([]);
+        $product->delete();
+        return redirect()->route("home");
     }
 }

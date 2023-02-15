@@ -15,6 +15,7 @@
         <strong>Product Name : </strong> {{$product -> name}} -- <strong>Digital : </strong> {{$product -> typology ->
         digital ? "Yes" : "No"}}
     </li>
+    <a href="{{route('product.delete',$product)}}">DELETE</a>
     @endforeach
     <hr>
     @endforeach
